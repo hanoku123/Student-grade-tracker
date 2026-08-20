@@ -15,39 +15,34 @@ public class main{
             Integer sub1 = scanner.nextInt();
             Integer sub2 = scanner.nextInt();
             Integer sub3 = scanner.nextInt();
-
-
-
             Integer marks = sub1 + sub2 + sub3;
-
             System.out.println("Total Marks: " + marks);
             int Average = calculateAverage(marks, 3);
             System.out.println("Average marks: " + Average);
-
-            if(Average >= 90){
-                System.out.println("Grade: A(top)");
-            }else if(Average >=70&&Average<90){
-                System.out.println("Grade: B");
-            }else if(Average >=50&&Average<70){
-                System.out.println("Grade: C");
-            }else if(Average >=35&&Average<50){
-                System.out.println("Grade: D");
-            }else if(Average<35){
-                System.out.println("Grade: E(failed)");
-            }
-
+            String Grade = calculateGrade(Average);
+            System.out.println("Grade: " + Grade);
         }
-
     }
     static String getStudentName(Scanner scanner){
         String Name = scanner.nextLine();
         return Name;
     }
-
-
     static int calculateAverage(int totalMarks, int totalSubjects) {
         int Average = totalMarks / totalSubjects;
         return Average;
+    }
+    static String calculateGrade(int Average) {
+        if (Average >= 90) {
+            return "A (Top)";
+        } else if (Average >= 70 ) {
+            return "B";
+        } else if (Average >= 50 ) {
+            return "C";
+        } else if (Average >= 35 ) {
+            return "D";
+        } else  {
+            return "E (fail)";
+        }
     }
 
 }
