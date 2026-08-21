@@ -15,7 +15,7 @@ public class main{
             Integer sub1 = scanner.nextInt();
             Integer sub2 = scanner.nextInt();
             Integer sub3 = scanner.nextInt();
-            Integer marks = sub1 + sub2 + sub3;
+            int marks = calculateTotal(sub1, sub2, sub3);
             System.out.println("Total Marks: " + marks);
             int Average = calculateAverage(marks, 3);
             System.out.println("Average marks: " + Average);
@@ -26,6 +26,10 @@ public class main{
     static String getStudentName(Scanner scanner){
         String Name = scanner.nextLine();
         return Name;
+    }
+    static int calculateTotal(int sub1, int sub2, int sub3){
+        int marks = sub1 + sub2 + sub3;
+        return marks;
     }
     static int calculateAverage(int totalMarks, int totalSubjects) {
         int Average = totalMarks / totalSubjects;
