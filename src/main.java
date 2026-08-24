@@ -3,7 +3,7 @@ public class main{
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Number of student: ");
-        Integer Num = scanner.nextInt();
+        int Num = scanner.nextInt();
         System.out.println("Number of student: " + Num);
         for(int i=0; i<Num; i++){
             System.out.println("Student " + (i+1) + " details" );
@@ -12,9 +12,22 @@ public class main{
             String Name = getStudentName(scanner);
             System.out.println("Student "+ (i+1) +" "+ Name);
             System.out.println("Enter student "+ (i+1) +" marks for 3 subjects: ");
-            Integer sub1 = scanner.nextInt();
-            Integer sub2 = scanner.nextInt();
-            Integer sub3 = scanner.nextInt();
+
+            int sub1 = scanner.nextInt();
+            while(sub1<0 || sub1>100){
+                System.out.println("Enter sub1 marks: ");
+                sub1 = scanner.nextInt();
+            }
+            int sub2 = scanner.nextInt();
+            while(sub2<0 || sub2>100){
+                System.out.println("Enter sub2 marks: ");
+                sub2 = scanner.nextInt();
+            }
+            int sub3 = scanner.nextInt();
+            while(sub3<0 || sub3>100){
+                System.out.println("Enter sub3 marks: ");
+                sub3 = scanner.nextInt();
+            }
             int marks = calculateTotal(sub1, sub2, sub3);
             System.out.println("Total Marks: " + marks);
             int Average = calculateAverage(marks, 3);
