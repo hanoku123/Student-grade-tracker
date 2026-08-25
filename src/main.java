@@ -14,20 +14,12 @@ public class main{
             System.out.println("Enter student "+ (i+1) +" marks for 3 subjects: ");
 
             int sub1 = scanner.nextInt();
-            while(sub1<0 || sub1>100){
-                System.out.println("Enter sub1 marks: ");
-                sub1 = scanner.nextInt();
-            }
+             sub1 = validationMark(sub1, scanner);
             int sub2 = scanner.nextInt();
-            while(sub2<0 || sub2>100){
-                System.out.println("Enter sub2 marks: ");
-                sub2 = scanner.nextInt();
-            }
+            sub2 = validationMark(sub2, scanner);
             int sub3 = scanner.nextInt();
-            while(sub3<0 || sub3>100){
-                System.out.println("Enter sub3 marks: ");
-                sub3 = scanner.nextInt();
-            }
+            sub3 = validationMark(sub3, scanner);
+
             int marks = calculateTotal(sub1, sub2, sub3);
             System.out.println("Total Marks: " + marks);
             int Average = calculateAverage(marks, 3);
@@ -39,6 +31,14 @@ public class main{
     static String getStudentName(Scanner scanner){
         String Name = scanner.nextLine();
         return Name;
+    }
+    static int validationMark(int subject, Scanner scanner){
+
+        while(subject<0 || subject>100){
+            System.out.println("Enter subject marks: ");
+            subject = scanner.nextInt();
+        }
+        return subject;
     }
     static int calculateTotal(int sub1, int sub2, int sub3){
         int marks = sub1 + sub2 + sub3;
