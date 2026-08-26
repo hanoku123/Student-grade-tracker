@@ -13,12 +13,20 @@ public class main{
             System.out.println("Student "+ (i+1) +" "+ Name);
             System.out.println("Enter student "+ (i+1) +" marks for 3 subjects: ");
 
+            System.out.println("Enter subject 1 marks: ");
+            String subjectName = "subject 1";
             int sub1 = scanner.nextInt();
-             sub1 = validationMark(sub1, scanner);
+            sub1 = validationMark(sub1, subjectName, scanner);
+
+            System.out.println("Enter subject 2 marks: ");
+             subjectName = "subject 2";
             int sub2 = scanner.nextInt();
-            sub2 = validationMark(sub2, scanner);
+            sub2 = validationMark(sub2,subjectName, scanner);
+
+            System.out.println("Enter subject 3 marks: ");
+             subjectName = "subject 3";
             int sub3 = scanner.nextInt();
-            sub3 = validationMark(sub3, scanner);
+            sub3 = validationMark(sub3, subjectName, scanner);
 
             int marks = calculateTotal(sub1, sub2, sub3);
             System.out.println("Total Marks: " + marks);
@@ -32,13 +40,14 @@ public class main{
         String Name = scanner.nextLine();
         return Name;
     }
-    static int validationMark(int subject, Scanner scanner){
+    static int validationMark(int subject, String subjectName, Scanner scanner){
 
-        while(subject<0 || subject>100){
-            System.out.println("Enter subject marks: ");
-            subject = scanner.nextInt();
-        }
-        return subject;
+            while (subject < 0 || subject > 100) {
+                System.out.println("Invalid marks for " +(subjectName)+ " Enter marks between 0 and 100:");
+                subject = scanner.nextInt();
+            }
+            return subject;
+
     }
     static int calculateTotal(int sub1, int sub2, int sub3){
         int marks = sub1 + sub2 + sub3;
