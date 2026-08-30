@@ -5,6 +5,7 @@ public class main{
         System.out.println("Enter Number of student: ");
         int Num = scanner.nextInt();
         System.out.println("Number of student: " + Num);
+
         for(int i=0; i<Num; i++){
             System.out.println("Student " + (i+1) + " details" );
             scanner.nextLine();
@@ -13,27 +14,25 @@ public class main{
             System.out.println("Student "+ (i+1) +" "+ Name);
             System.out.println("Enter student "+ (i+1) +" marks for 3 subjects: ");
 
-            System.out.println("Enter subject 1 marks: ");
-            String subjectName = "subject 1";
-            int sub1 = scanner.nextInt();
-            sub1 = validationMark(sub1, subjectName, scanner);
+            int[] marks = new int[3];
+            for( int j=0; j<marks.length; j++) {
 
-            System.out.println("Enter subject 2 marks: ");
-             subjectName = "subject 2";
-            int sub2 = scanner.nextInt();
-            sub2 = validationMark(sub2,subjectName, scanner);
+                System.out.println("Enter subject" + (j + 1) + "marks: ");
+                String subjectName = "subject" + (j + 1);
+                marks[j] = scanner.nextInt();
 
-            System.out.println("Enter subject 3 marks: ");
-             subjectName = "subject 3";
-            int sub3 = scanner.nextInt();
-            sub3 = validationMark(sub3, subjectName, scanner);
+                marks[j] = validationMark(marks[j], subjectName, scanner);
 
-            int marks = calculateTotal(sub1, sub2, sub3);
-            System.out.println("Total Marks: " + marks);
-            int Average = calculateAverage(marks, 3);
-            System.out.println("Average marks: " + Average);
-            String Grade = calculateGrade(Average);
-            System.out.println("Grade: " + Grade);
+            }
+
+                int totalmarks = calculateTotal(marks);
+                System.out.println("Total Marks: " + totalmarks);
+
+                int Average = calculateAverage(totalmarks, 3);
+                System.out.println("Average marks: " + Average);
+                String Grade = calculateGrade(Average);
+                System.out.println("Grade: " + Grade);
+
         }
     }
     static String getStudentName(Scanner scanner){
@@ -42,16 +41,21 @@ public class main{
     }
     static int validationMark(int subject, String subjectName, Scanner scanner){
 
-            while (subject < 0 || subject > 100) {
-                System.out.println("Invalid marks for " +(subjectName)+ " Enter marks between 0 and 100:");
-                subject = scanner.nextInt();
-            }
-            return subject;
+        while (subject < 0 || subject > 100) {
+            System.out.println("Invalid marks for " +(subjectName)+ " Enter marks between 0 and 100:");
+            subject = scanner.nextInt();
+        }
+        return subject;
 
     }
-    static int calculateTotal(int sub1, int sub2, int sub3){
-        int marks = sub1 + sub2 + sub3;
-        return marks;
+    static int calculateTotal(int[] marks){
+        int totalmarks = 0;
+        for(int i=0; i<marks.length; i++) {
+
+            totalmarks = totalmarks + marks[i];
+
+        }
+            return totalmarks;
     }
     static int calculateAverage(int totalMarks, int totalSubjects) {
         int Average = totalMarks / totalSubjects;
